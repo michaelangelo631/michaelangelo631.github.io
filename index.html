@@ -73,11 +73,50 @@
             max-width: 100%;
             display: block;
             margin: 0 auto;
-            padding: 25px; /* Increased padding around the iframe (25% more padding than before) */
+            padding: 20px; /* More padding around the iframe */
             min-height: 800px; /* Set a minimum height for the iframe */
             height: auto; /* Allow dynamic height based on content */
             scrolling: auto; /* Enable scrolling if the content overflows */
             margin-bottom: 12px; /* Add margin at the bottom to create space (1/2 inch or 12px) */
+        }
+
+        /* Modal styling for displaying full-size images */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
+        }
+
+        /* Modal content (the image) */
+        .modal-content {
+            margin: 5% auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        /* Close button */
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         /* Responsive adjustments */
@@ -105,7 +144,6 @@
                 margin-top: 5px; /* Minimal space between the logo and dropdown */
             }
         }
-
     </style>
 </head>
 <body>
@@ -138,6 +176,12 @@
     <!-- Content Area to Display the Selected Pinterest Board -->
     <div class="content">
         <iframe id="pinterestBoard" src="https://petracoding.github.io/pinterest/board.html?link=stairbuildersny/stair-concepts/&hideHeader=1&hideFooter=1&transparent=0" height="800" width="100%" frameborder="0" scrolling="auto"></iframe>
+    </div>
+
+    <!-- The Modal for displaying full-size image -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
     <!-- JavaScript to Update the Board Based on URL Parameter -->
@@ -188,6 +232,20 @@
         function selectBoardFromDropdown() {
             var selectedBoard = document.getElementById('boardDropdown').value;
             updateBoard(selectedBoard.split('=')[1]);
+        }
+
+        // Open the modal with the clicked image
+        function openModal(imageSrc) {
+            var modal = document.getElementById('myModal');
+            var modalImg = document.getElementById('modalImage');
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
+
+        // Close the modal
+        function closeModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = "none";
         }
     </script>
 
