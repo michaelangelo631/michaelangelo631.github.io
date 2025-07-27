@@ -1,253 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Pinterest Boards</title>
-    <style>
-        /* General page styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        /* Top banner with company logo */
-        header {
-            background-color: white;
-            padding: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 2px solid #333; /* Elegant line at the bottom of the banner */
-        }
-
-        header img {
-            max-height: 125px; /* Adjust logo size */
-            vertical-align: middle;
-        }
-
-        /* Navigation Links (Boards 1-5) */
-        .nav-links {
-            display: flex;
-            justify-content: center;  /* Center the navigation items */
-            gap: 30px; /* Adjust spacing between links */
-            font-size: 18px;
-            flex-grow: 1; /* Make sure the nav takes up available space */
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #007BFF; /* Change color on hover */
-        }
-
-        /* Dropdown Menu for Smaller Screens */
-        .dropdown {
-            display: none;
-        }
-
-        .dropdown select {
-            font-size: 16px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        /* Content area to display the selected Pinterest board */
-        .content {
-            text-align: center;
-            padding: 20px;
-            padding-bottom: 20px; /* Add padding to the bottom of the content area */
-        }
-
-        .pinterest-board iframe {
-            width: 100%;
-            border: none;
-            max-width: 100%;
-            display: block;
-            margin: 0 auto;
-            padding: 20px; /* More padding around the iframe */
-            min-height: 800px; /* Set a minimum height for the iframe */
-            height: auto; /* Allow dynamic height based on content */
-            scrolling: auto; /* Enable scrolling if the content overflows */
-            margin-bottom: 12px; /* Add margin at the bottom to create space (1/2 inch or 12px) */
-        }
-
-        /* Modal styling for displaying full-size images */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
-        }
-
-        /* Modal content (the image) */
-        .modal-content {
-            margin: 5% auto;
-            display: block;
-            max-width: 90%;
-            max-height: 80%;
-        }
-
-        /* Close button */
-        .close {
-            color: #fff;
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #999;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Responsive adjustments */
-        @media screen and (max-width: 768px) {
-            /* Logo and header size adjustments for smaller screens */
-            header {
-                flex-direction: column; /* Stack logo and dropdown vertically on small screens */
-                align-items: center; /* Center everything in the header */
-                padding: 10px 0; /* Reduce padding to make the header smaller */
-            }
-
-            header img {
-                max-height: 80px; /* Reduce logo size on small screens */
-                margin-bottom: 5px; /* Reduce space between the logo and dropdown */
-            }
-
-            .nav-links {
-                display: none; /* Hide the regular links on small screens */
-            }
-
-            .dropdown {
-                display: block; /* Show the dropdown on small screens */
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 5px; /* Minimal space between the logo and dropdown */
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stairbuilders Legal Policies</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1, h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    nav {
+      margin-bottom: 20px;
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #2a5db0;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Top Banner with Company Logo and Navigation Links -->
-    <header>
-        <img src="gitLogo2.png" alt="StairBuilders Logo"> <!-- Replace with your logo image -->
+  <h1>Stairbuilders Legal Information</h1>
 
-        <!-- Navigation Links for Boards 1-5 -->
-        <div class="nav-links">
-            <a href="?board=stair-concepts">Stair Concepts</a>
-            <a href="?board=metal-balusters">Metal Balusters</a>
-            <a href="?board=wood-balusters">Wood Balusters</a>
-            <a href="?board=wood-handrails">Wood Handrails</a>
-            <a href="?board=posts">Posts</a>
-        </div>
+  <nav>
+    <a href="#terms">Terms & Conditions</a>
+    <a href="#privacy">Privacy Policy</a>
+  </nav>
 
-        <!-- Dropdown for smaller screens -->
-        <div class="dropdown">
-            <select id="boardDropdown" onchange="selectBoardFromDropdown()">
-                <option value="?board=stair-concepts">Stair Concepts</option>
-                <option value="?board=metal-balusters">Metal Balusters</option>
-                <option value="?board=wood-balusters">Wood Balusters</option>
-                <option value="?board=wood-handrails">Wood Handrails</option>
-                <option value="?board=posts">Posts</option>
-            </select>
-        </div>
-    </header>
+  <section id="terms">
+    <h2>Terms and Conditions</h2>
+    <p>
+      These Terms and Conditions govern the use of our services. By engaging Stairbuilders for design, manufacturing, or installation services, you agree to these terms.
+    </p>
+    <ul>
+      <li>All scheduled services are subject to change based on weather, job site readiness, or material availability.</li>
+      <li>Payment terms will be specified in your service estimate or invoice.</li>
+      <li>We reserve the right to refuse service under conditions that are unsafe, unlawful, or otherwise beyond our professional scope.</li>
+      <li>All communication, including SMS, will be used solely for job coordination or customer service. You may opt out of text messaging at any time by replying "STOP."</li>
+    </ul>
+  </section>
 
-    <!-- Content Area to Display the Selected Pinterest Board -->
-    <div class="content">
-        <iframe id="pinterestBoard" src="https://petracoding.github.io/pinterest/board.html?link=stairbuildersny/stair-concepts/&hideHeader=1&hideFooter=1&transparent=0" height="800" width="100%" frameborder="0" scrolling="auto"></iframe>
-    </div>
-
-    <!-- The Modal for displaying full-size image -->
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
-    <!-- JavaScript to Update the Board Based on URL Parameter -->
-    <script>
-        function updateBoard(board) {
-            var boardUrl = '';
-
-            // Map the selected board to its corresponding Pinterest URL
-            switch(board) {
-                case 'stair-concepts':
-                    boardUrl = 'https://petracoding.github.io/pinterest/board.html?link=stairbuildersny/stair-concepts/&hideHeader=1&hideFooter=1&transparent=0';
-                    break;
-                case 'metal-balusters':
-                    boardUrl = 'https://petracoding.github.io/pinterest/board.html?link=stairbuildersny/metal-balusters/&hideHeader=1&hideFooter=1&transparent=0';
-                    break;
-                case 'wood-balusters':
-                    boardUrl = 'https://petracoding.github.io/pinterest/board.html?link=stairbuildersny/wood-balusters/&hideHeader=1&hideFooter=1&transparent=0';
-                    break;
-                case 'wood-handrails':
-                    boardUrl = 'https://petracoding.github.io/pinterest/board.html?link=stairbuildersny/wood-handrails/&hideHeader=1&hideFooter=1&transparent=0';
-                    break;
-                case 'posts':
-                    boardUrl = 'https://petracoding.github.io/pinterest/board.html?link=stairbuildersny/posts/&hideHeader=1&hideFooter=1&transparent=0';
-                    break;
-            }
-
-            // Update iframe to display the selected Pinterest board
-            document.getElementById('pinterestBoard').src = boardUrl;
-        }
-
-        // Check for a URL parameter and update the iframe when the page loads
-        window.onload = function() {
-            // Get the 'board' parameter from the URL
-            var urlParams = new URLSearchParams(window.location.search);
-            var board = urlParams.get('board');
-
-            if (board) {
-                updateBoard(board); // Call the updateBoard function with the board parameter
-                // Update the dropdown value to reflect the selected board
-                document.getElementById('boardDropdown').value = "?board=" + board;
-            } else {
-                // Default board if no parameter is provided
-                updateBoard('stair-concepts');
-            }
-        };
-
-        // Function to handle the dropdown change and update the iframe
-        function selectBoardFromDropdown() {
-            var selectedBoard = document.getElementById('boardDropdown').value;
-            updateBoard(selectedBoard.split('=')[1]);
-        }
-
-        // Open the modal with the clicked image
-        function openModal(imageSrc) {
-            var modal = document.getElementById('myModal');
-            var modalImg = document.getElementById('modalImage');
-            modal.style.display = "block";
-            modalImg.src = imageSrc;
-        }
-
-        // Close the modal
-        function closeModal() {
-            var modal = document.getElementById('myModal');
-            modal.style.display = "none";
-        }
-    </script>
+  <section id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>
+      This policy outlines how Stairbuilders handles your personal information.
+    </p>
+    <ul>
+      <li>We collect names, phone numbers, addresses, and job details solely for service delivery and communication purposes.</li>
+      <li>Your data will never be sold or shared with third parties unless legally required or necessary to fulfill contracted services.</li>
+      <li>We only use SMS messaging to coordinate services or respond to your inquiries.</li>
+      <li>Customers can opt out of text communication at any time by replying "STOP."</li>
+    </ul>
+    <p>
+      For questions or requests related to your data, please contact us at [your-email@example.com] or call [your business phone number].
+    </p>
+  </section>
 
 </body>
 </html>
